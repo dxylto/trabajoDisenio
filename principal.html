@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            text-align: center;
+        }
+        .contenedor{
+            display: flex;
+            justify-content: space-between; 
+        }
+        .menu{
+            width: 20%;
+            height: 400px;
+            padding-top:10px ;
+            padding: 5px;
+            border: white solid 2px;
+            background-color: black;
+            border-radius: 20px;
+            color: white;
+        }
+        .menu>button{
+            margin-top: 40px;
+            border: white solid 2px;
+            background-color: black;
+            color: white;
+            width: 150px;
+            padding: 5px;
+            border-radius: 20px;
+        }
+        .jugar{ 
+            margin-left: auto;
+            width: 20%;
+            height: 400px;
+            padding-top:40px ;
+            padding: 5px;
+            border: white solid 2px;
+            background-color: black;
+            border-radius: 20px;
+            color: white;
+        }
+        .jugar>button{
+            margin-top: 45px;
+            border: white solid 2px;
+            background-color: black;
+            color: white;
+            width: 150px;
+            padding: 5px;
+            border-radius: 20px;
+        }
+        .tablero{
+            height: 410px;
+            background-color: black;
+            width: 59%;
+            border: solid white;
+            border-radius: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>PONG</h1>
+    <div class="contenedor"> 
+    <div class="menu">
+        <p class="nombre">NOMBRE</p>
+        <button class="accesibilidad">ACCESIBILIDAD</button><br>
+        <button class="session">INCIAR SESIÓN</button><br>
+        <button class="tienda">TIENDA</button><br>
+        <button class="ranking">RANKINGS</button>
+    </div>
+    <div class="tablero"></div>
+    <div class="jugar">
+        <p class="juega">JUGAR</p>
+        <button class="linea">EN LINEA</button><br>
+        <button class="ia">IA</button><br>
+        <button class="amigos">AMIGOS</button>
+    </div>
+</div>
+</body>
+</html>

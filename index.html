@@ -1,28 +1,131 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="css/index.css">
+    <title>PONG</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <style>
+        * {
+            text-align: center;
+        }
+        body {
+            background-color: black;
+            color: white;
+        }
+        .contenedor {
+            display: flex;
+            justify-content: space-between;     
+            height: 90vh;
+            justify-content: center;
+        }
+        .titulo {
+            color: white;
+        }
+        .menu, .jugar {
+            display: flex;
+            flex-direction: column; 
+            justify-content: center; 
+            align-items: center; 
+            width: 20%;
+            height: 95%;
+            padding: 10px;
+            border: white solid 2px;
+            background-color: black;
+            border-radius: 20px;
+        }
+        .menu button, .jugar button {
+            margin-top: 20px;
+            border: white solid 2px;
+            background-color: black;
+            color: white;
+            width: 150px;
+            padding: 5px;
+            border-radius: 20px;
+        }
+        .tablero {
+            background-color: black;
+            width: 59%;
+            border: solid white;
+            border-radius: 20px;
+            height: 96%;
+        }
+        
+        /* Modo Alto Contraste */
+        .alto-contraste {
+            background-color: black ;
+            color: white;
+        }
+        .modal-content,.modal-body {
+            background-color: black;
+            color: white;
+            border: white solid 2px;
+        }
+    </style>
 </head>
 <body>
     <h1 class="titulo">PONG</h1>
+    
     <div class="contenedor"> 
-    <div class="menu">
-        <p class="nombre">NOMBRE</p>
-        <button class="accesibilidad">ACCESIBILIDAD</button><br>
-        <button class="session">INCIAR SESIÓN</button><br>
-        <button class="tienda">TIENDA</button><br>
-        <button class="ranking">RANKINGS</button>
+        <div class="menu">
+            <p class="nombre">NOMBRE</p>
+            <button class="accesibilidad" data-bs-toggle="modal" data-bs-target="#accessibilityModal">
+                ACCESIBILIDAD
+            </button>
+            <button class="session">INICIAR SESIÓN</button>
+            <button class="tienda">TIENDA</button>
+            <button class="ranking">RANKINGS</button>
+        </div>
+        
+        <div class="tablero"></div>
+        
+        <div class="jugar">
+            <p class="juega">JUGAR</p>
+            <button class="linea">EN LÍNEA</button>
+            <button class="ia">IA</button>
+            <button class="amigos">AMIGOS</button>
+        </div>
     </div>
-    <div class="tablero"></div>
-    <div class="jugar">
-        <p class="juega">JUGAR</p>
-        <button class="linea">EN LINEA</button><br>
-        <button class="ia">IA</button><br>
-        <button class="amigos">AMIGOS</button>
+    <div class="modal fade" id="accessibilityModal" tabindex="-1" aria-labelledby="accessibilityModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="accessibilityModalLabel">Opciones de Accesibilidad</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                </div>
+                <div class="modal-body text-center">
+                    <button class="btn btn-outline-primary mb-2" onclick="aumentarTexto()">Aumentar Texto</button>
+                    <button class="btn btn-outline-secondary mb-2" onclick="disminuirTexto()">Disminuir Texto</button>
+                    <button class="btn btn-outline-dark mb-2" onclick="modoAltoContraste()">Modo Alto Contraste</button>
+                </div>
+            </div>
+        </div>
     </div>
-</div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+                let fontSize = 16; 
+
+function aumentarTexto() {
+    fontSize += 2;
+    document.body.style.fontSize = fontSize + "px";
+}
+
+function disminuirTexto() {
+    if (fontSize > 10) { 
+        fontSize -= 2;
+        document.body.style.fontSize = fontSize + "px";
+    }
+}
+
+function modoAltoContraste() {
+    document.body.classList.toggle("alto-contraste");
+}
+</script>
+
 </body>
 </html>

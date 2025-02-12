@@ -13,6 +13,5 @@
         >Porcentaje de partidas ganadas y perdidas
     *Amigos
         >Rankings de amigos
-        >Ver partidas en linea
 
    

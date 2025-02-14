@@ -1,36 +1,33 @@
-*{
+* {
     text-align: center;
-    
 }
-body{
+body {
     background-color: black;
+    color: white;
 }
-.contenedor{
+.contenedor {
     display: flex;
     justify-content: space-between;     
     height: 90vh;
-    background-color: black;
     justify-content: center;
 }
-.titulo{
+.titulo {
     color: white;
 }
-.menu{
+.menu, .jugar {
     display: flex;
     flex-direction: column; 
     justify-content: center; 
     align-items: center; 
     width: 20%;
     height: 95%;
-    padding-top:10px ;
-    padding: 5px;
+    padding: 10px;
     border: white solid 2px;
     background-color: black;
     border-radius: 20px;
-    color: white;
 }
-.menu>button{
-    margin-top: 40px;
+.btn {
+    margin-top: 20px;
     border: white solid 2px;
     background-color: black;
     color: white;
@@ -38,34 +35,21 @@ body{
     padding: 5px;
     border-radius: 20px;
 }
-.jugar{ 
-    margin-left: auto;
-    width: 20%;
-    padding-top:40px ;
-    padding: 5px;
-    border: white solid 2px;
-    background-color: black;
-    border-radius: 20px;
-    color: white;
-    height: 95%;
-    display: flex;
-    flex-direction: column; 
-    justify-content: center; 
-    align-items: center; 
-}
-.jugar>button{
-    margin-top: 45px;
-    border: white solid 2px;
-    background-color: black;
-    color: white;
-    width: 150px;
-    padding: 5px;
-    border-radius: 20px;
-}
-.tablero{
+.tablero {
     background-color: black;
     width: 59%;
     border: solid white;
     border-radius: 20px;
     height: 96%;
+}
+
+/* Modo Alto Contraste */
+.alto-contraste {
+    background-color: black ;
+    color: white;
+}
+.modal-content,.modal-body {
+    background-color: black;
+    color: white;
+    border: white solid 2px;
 }

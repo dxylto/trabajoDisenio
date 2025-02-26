@@ -1,9 +1,17 @@
-* {
-    text-align: center;
-}
 body {
     background-color: black;
     color: white;
+    text-align: center;
+}
+.logForm{
+    width: 50%;
+    width: 350px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: white solid 2px;
+    border-radius: 20px;
+    padding: 20px;
 }
 .contenedor {
     display: flex;
@@ -20,7 +28,8 @@ body {
     justify-content: center; 
     align-items: center; 
     width: 20%;
-    height: 95%;
+    min-width: 150px;
+    height: 100%;
     padding: 10px;
     border: white solid 2px;
     background-color: black;
@@ -35,12 +44,17 @@ body {
     padding: 5px;
     border-radius: 20px;
 }
+.btn:hover {
+    background-color: rgb(211, 211, 211);
+    color: black;
+    font-weight: bold;
+}
 .tablero {
     background-color: black;
     width: 59%;
     border: solid white;
     border-radius: 20px;
-    height: 96%;
+    height: 100%;
 }
 
 /* Modo Alto Contraste */
@@ -52,4 +66,8 @@ body {
     background-color: black;
     color: white;
     border: white solid 2px;
+}
+
+#toggleBtn {
+    position: relative;
 }

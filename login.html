@@ -1,47 +1,95 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LogIN</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="css/index.css">
-    <style>
-        form{
-            width: 50%;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            border: white solid 2px;
-            border-radius: 20px;
-            padding: 20px;
-        }
-        body{
-            display: flex;
-            justify-content: center;
-            margin-top: 25vh;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LogIN</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/index.css">
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      margin-top: 25vh;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .container {
+      position: relative;
+      width: 350px;
+      overflow: hidden;
+      background: black;
+      padding: 20px;
+    }
+
+    .form-wrapper {
+      display: flex;
+      transition: transform 0.5s ease-in-out;
+      width: 200%;
+    }
+
+    .form-container {
+      width: 50%;
+      padding: 20px;
+      box-sizing: border-box;
+    }
+  </style>
 </head>
+
 <body>
-    <!--Boostrap floating lavels?
-    Tooltip Recuerdame?
-    Boostrap range con edad?-->
-    <form>
+  <div class="container">
+    <div class="form-wrapper" id="formWrapper">
+      <form class="logForm form-container" id="login">
+        <h2 class="titulo">Iniciar Sesión</h2>
         <div class="mb-3">
-          <label for="exampleInputEmail1" class="form-label">Usuario</label>
-          <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+          <label for="loginUser" class="form-label">Usuario</label>
+          <input type="text" class="form-control" id="loginUser">
         </div>
         <div class="mb-3">
-          <label for="exampleInputPassword1" class="form-label">Password</label>
-          <input type="password" class="form-control" id="exampleInputPassword1">
+          <label for="loginPassword" class="form-label">Password</label>
+          <input type="password" class="form-control" id="loginPassword">
         </div>
         <div class="mb-3 form-check">
-          <input type="checkbox" class="form-check-input" id="exampleCheck1">
-          <label class="form-check-label" for="exampleCheck1">Recuérdame</label>
+          <input type="checkbox" class="form-check-input" id="loginCheck">
+          <label class="form-check-label" for="loginCheck">Recuérdame</label>
         </div>
-        <button type="submit" class="btn btn-primary">Iniciar Sesión</button>
+        <button type="submit" class="btn">Iniciar Sesión</button>
       </form>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+      <form class="logForm form-container" id="registro">
+        <h2 class="titulo">Registro</h2>
+        <div class="mb-3">
+          <label for="registerUser" class="form-label">Usuario</label>
+          <input type="text" class="form-control" id="registerUser">
+        </div>
+        <div class="mb-3">
+          <label for="registerPassword" class="form-label">Password</label>
+          <input type="password" class="form-control" id="registerPassword">
+        </div>
+        <div class="mb-3">
+          <label for="registerPasswordRepeat" class="form-label">Repetir Password</label>
+          <input type="password" class="form-control" id="registerPasswordRepeat">
+        </div>
+        <div class="mb-3 form-check">
+          <input type="checkbox" class="form-check-input" id="registerCheck">
+          <label class="form-check-label" for="registerCheck">Recuérdame</label>
+        </div>
+        <button type="submit" class="btn">Registrar</button>
+      </form>
+    </div>
+    <button type="button" class="btn" id="toggleBtn" onclick="toggleForm()">Registrarse</button>
+  </div>
+  <script>
+    let isLogin = true;
+    function toggleForm() {
+      const formWrapper = document.getElementById('formWrapper');
+      isLogin = !isLogin;
+      formWrapper.style.transform = isLogin ? 'translateX(0%)' : 'translateX(-50%)';
+      document.getElementById('toggleBtn').textContent = isLogin ? 'Registrarse' : 'Iniciar sesión';
+    }
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
+
 </html>

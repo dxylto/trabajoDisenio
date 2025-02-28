@@ -20,8 +20,8 @@
             <button id="accesibilidad" class="btn" data-bs-toggle="modal" data-bs-target="#accessibilityModal">
                 ACCESIBILIDAD
             </button>
-            <button id="session" class="btn">INICIAR SESIÓN</button>
-            <button id="tienda" class="btn">TIENDA</button>
+          <a href="login.html"> <button id="session" class="btn">INICIAR SESIÓN</button></a>
+           <a href="perfil.html"><button id="perfil" class="btn">PERFIL</button></a>
             <button id="ranking" class="btn">RANKINGS</button>
         </div>
         
@@ -55,8 +55,9 @@
                 let fontSize = 16; 
 
 function aumentarTexto() {
+    if (fontSize < 30) { 
     fontSize += 2;
-    document.body.style.fontSize = fontSize + "px";
+    document.body.style.fontSize = fontSize + "px";}
 }
 
 function disminuirTexto() {

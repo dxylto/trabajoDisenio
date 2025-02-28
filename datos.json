@@ -1,0 +1,24 @@
+{
+    "usuarios": [
+      {"username": "carlos34", "nombre": "Carlos", "ganadas": 10, "perdidas": 5, "amigos": ["ana21", "miguel89"], "nivel": 3},
+      {"username": "ana21", "nombre": "Ana", "ganadas": 8, "perdidas": 6, "amigos": ["carlos34", "lucia77"], "nivel": 2},
+      {"username": "miguel89", "nombre": "Miguel", "ganadas": 15, "perdidas": 3, "amigos": ["carlos34"], "nivel": 4},
+      {"username": "lucia77", "nombre": "Lucia", "ganadas": 7, "perdidas": 9, "amigos": ["ana21", "javier56"], "nivel": 2},
+      {"username": "javier56", "nombre": "Javier", "ganadas": 12, "perdidas": 4, "amigos": ["lucia77"], "nivel": 3},
+      {"username": "elena92", "nombre": "Elena", "ganadas": 6, "perdidas": 10, "amigos": ["pablo63"], "nivel": 1},
+      {"username": "pablo63", "nombre": "Pablo", "ganadas": 9, "perdidas": 7, "amigos": ["elena92"], "nivel": 2},
+      {"username": "sofia81", "nombre": "Sofia", "ganadas": 14, "perdidas": 2, "amigos": ["diego45"], "nivel": 4},
+      {"username": "diego45", "nombre": "Diego", "ganadas": 5, "perdidas": 12, "amigos": ["sofia81"], "nivel": 1},
+      {"username": "mariana38", "nombre": "Mariana", "ganadas": 11, "perdidas": 6, "amigos": ["raul29"], "nivel": 3},
+      {"username": "raul29", "nombre": "Raul", "ganadas": 13, "perdidas": 4, "amigos": ["mariana38", "valeria74"], "nivel": 3},
+      {"username": "valeria74", "nombre": "Valeria", "ganadas": 8, "perdidas": 9, "amigos": ["raul29"], "nivel": 2},
+      {"username": "luis60", "nombre": "Luis", "ganadas": 4, "perdidas": 14, "amigos": ["camila23"], "nivel": 1},
+      {"username": "camila23", "nombre": "Camila", "ganadas": 10, "perdidas": 5, "amigos": ["luis60"], "nivel": 3},
+      {"username": "andres82", "nombre": "Andres", "ganadas": 16, "perdidas": 2, "amigos": ["natalia95"], "nivel": 5},
+      {"username": "natalia95", "nombre": "Natalia", "ganadas": 7, "perdidas": 10, "amigos": ["andres82"], "nivel": 2},
+      {"username": "fernando68", "nombre": "Fernando", "ganadas": 9, "perdidas": 8, "amigos": ["isabel50"], "nivel": 2},
+      {"username": "isabel50", "nombre": "Isabel", "ganadas": 14, "perdidas": 3, "amigos": ["fernando68"], "nivel": 4},
+      {"username": "victor79", "nombre": "Victor", "ganadas": 6, "perdidas": 12, "amigos": ["paula66"], "nivel": 1},
+      {"username": "paula66", "nombre": "Paula", "ganadas": 12, "perdidas": 5, "amigos": ["victor79"], "nivel": 3}
+    ]
+}  

@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfil de Usuario - Pong</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: rgb(20, 20, 20);
+            color: white;
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .menu {
+            width: 100%;
+            background-color: rgb(90, 89, 89);
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            position: absolute;
+            top: 0;
+        }
+        .menu a {
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+            margin: 0 15px;
+        }
+        .menu a:hover{
+            background-color: rgb(65, 64, 64);
+        }
+        .profile-card {
+            width: 90%;
+            max-width: 600px;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 8px 16px rgba(255, 255, 255, 0.2);
+            text-align: center;
+            background: linear-gradient(135deg, rgb(31, 30, 30), gray);
+        }
+        .avatar {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            border: 3px solid white;
+            margin-bottom: 20px;
+        }
+        h2, p {
+            color: white;
+            text-shadow: 1px 1px 3px rgba(255, 255, 255, 0.2);
+        }
+        .btn-custom {
+            background-color: black;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            transition: 0.3s;
+        }
+        .btn-custom:hover {
+            background-color: gray;
+        }
+    </style>
+</head>
+<body>
+    <nav class="menu">
+        <a href="index.html">Página Principal</a>
+        <a href="">Jugar</a>
+    </nav>
+    
+    <div class="profile-card">
+        <img id="avatar"  alt="Avatar" class="avatar">
+        <h2 id="username">nombre de usuario</h2>
+        <p><strong>Nivel:</strong> <span id="nivel">1</span></p>
+        <p><strong>Partidas Ganadas:</strong> <span id="ganadas">0</span></p>
+        <p><strong>Partidas Perdidas:</strong> <span id="perdidas">0</span></p>
+        <button class="btn btn-custom mt-2" onclick="modificarPerfil()">Actualizar Perfil</button>
+        <button class="btn btn-custom mt-2" onclick="listaDeAmigos()">Amigos</button>
+    </div>
+
+
+
+
+    <script>
+        let DATOS = [];
+        function modificarPerfil() {
+        }   
+        function listaDeAmigos() {
+        }
+        async function datosjson() {
+            try {
+                let r = await fetch("./datos.json");
+                    DATOS = await r.json();
+                    console.log(DATOS)
+                    usuarios();
+            } catch (error) {
+                console.log("no existe")
+            }
+        }
+        datosjson();
+        function usuarios() {
+            let datosUsuario = DATOS["usuarios"][0];
+            let usuario = document.getElementById("username")
+            let nivel = document.getElementById("nivel")
+            let ganadas = document.getElementById("ganadas")
+            let perdidas = document.getElementById("perdidas")
+            usuario.textContent = datosUsuario["username"];
+            ganadas.textContent = datosUsuario["ganadas"];
+            nivel.textContent = datosUsuario["nivel"]
+            perdidas.textContent = datosUsuario["perdidas"]
+        }
+    </script>
+</body>
+</html>

@@ -7,7 +7,6 @@
         >Ventana de accesibilidad
         >Tablero
     *Inicio de sesión/Registro
-    *Tienda
     *RanKing
     *Perfil
         >Porcentaje de partidas ganadas y perdidas

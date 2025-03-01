@@ -7,3 +7,59 @@ function acessibilidad(e){
     Ndiv.appendChild(bLetra);
     document.body.appendChild(Ndiv);
 }
+
+let DATOS = [];
+function modificarPerfil() {
+    
+}   
+function verAmigos(){
+    let tabla = document.getElementById("amigos");
+    if (tabla.style.display == "none") {
+        tabla.style.display = "block"
+    }else tabla.style.display = "none"
+}
+function listaDeAmigos(amigos) {
+    let table = document.getElementById("amigos");
+    let tr = document.createElement("tr");
+    let titulo = document.createElement("th");
+    titulo.textContent = "Amigos";
+    table.appendChild(titulo);
+    for (let i = 0; i < amigos.length; i++) {
+        let tr2 = document.createElement("tr");
+       let td = document.createElement("td");
+       td.textContent = amigos[i];
+       if (i%2 == 0) {
+            td.style.backgroundColor = "gray";
+       } 
+       tr2.appendChild(td);  
+       table.appendChild(tr2);    
+    }
+    table.style.display = "none";
+}
+async function datosjson() {
+    try {
+        let r = await fetch("./datos.json");
+            DATOS = await r.json();
+            console.log(DATOS)
+            usuarios();
+    } catch (error) {
+        console.log("no existe")
+    }
+}
+datosjson();
+function usuarios(datosUsuario = null, lista = true) {
+    if (!datosUsuario) {
+        datosUsuario = DATOS["usuarios"][0]; // Usa el primero solo si no se pasa un usuario
+    }
+    let usuario = document.getElementById("username")
+    let nivel = document.getElementById("nivel")
+    let ganadas = document.getElementById("ganadas")
+    let perdidas = document.getElementById("perdidas")
+    usuario.textContent = datosUsuario["username"];
+    ganadas.textContent = datosUsuario["ganadas"];
+    nivel.textContent = datosUsuario["nivel"]
+    perdidas.textContent = datosUsuario["perdidas"]
+  if (lista) {
+    listaDeAmigos(datosUsuario['amigos']);
+  }
+}

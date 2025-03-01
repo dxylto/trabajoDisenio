@@ -1,16 +1,17 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Perfil de Usuario - Pong</title>
+    <title>Document</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script defer src="index.js"></script>
+    <link rel="stylesheet" href="css/index.css">
     <script defer src="index.js"></script>
     <style>
         body {
             background-color: rgb(20, 20, 20);
             color: white;
-            font-family: 'Arial', sans-serif;
             margin: 0;
             display: flex;
             flex-direction: column;
@@ -20,6 +21,7 @@
         }
         .menu {
             width: 100%;
+            height: 50px;
             background-color: rgb(90, 89, 89);
             padding: 10px 20px;
             display: flex;
@@ -56,44 +58,51 @@
             color: white;
             text-shadow: 1px 1px 3px rgba(255, 255, 255, 0.2);
         }
-        .btn-custom {
-            background-color: black;
-            color: white;
-            border: none;
-            padding: 10px 15px;
-            border-radius: 5px;
-            transition: 0.3s;
-        }
-        .btn-custom:hover {
-            background-color: gray;
-        }
-        .tablaAmigos{
-            margin: 50px;
-            text-align: center;
-            td{
-                padding: 10px;
-                width: 500px;
-            }
-        }
     </style>
 </head>
 <body>
     <nav class="menu">
         <a href="index.html">Página Principal</a>
-        <a href="">Jugar</a>
     </nav>
-    
-    <div class="profile-card">
+    <form action="">
+    <p><input type="text" name="buscar" id="usu" value="Introduzca el usuario">
+    <input type="submit" id="buscar" value="buscar"></p> 
+    <h2 id="respuesta"></h2>
+    <div id="perfil" class="profile-card" style="display: none;">
         <img id="avatar"  alt="Avatar" class="avatar" src="img/Imagen pegada.png">
-        <h2 id="username">nombre de usuario</h2>
+        <h3 id="username">nombre de usuario</h3>
         <p><strong>Nivel:</strong> <span id="nivel">1</span></p>
         <p><strong>Partidas Ganadas:</strong> <span id="ganadas">0</span></p>
         <p><strong>Partidas Perdidas:</strong> <span id="perdidas">0</span></p>
-        <button id="verAmigos" class="btn btn-custom mt-2" onclick="verAmigos()">Amigos</button>
     </div>
-    <table id="amigos" class="tablaAmigos"></table>
     <script>
+        let busqueda = document.getElementById("buscar");
+        busqueda.addEventListener("click",function(event){
+            event.preventDefault();
+            let h2 = document.getElementById("respuesta");
+           if(!buscarUsuario(usu.value)){
  
+                h2.textContent = "El usuario que buscas no existe";
+                h2.style.color = "red";
+           }else{
+                let perfil = document.getElementById("perfil");
+                perfil.style.display = "block";
+                h2.textContent = "Usuario encontrado";
+                h2.style.color = "white";
+           }
+        });
+        function buscarUsuario(usuario) {
+            for (let i = 0; i < usuario.length-1; i++) {
+                if (DATOS["usuarios"][i]["username"] == usuario) {
+                    console.log("llego")
+                    usuarios(DATOS["usuarios"][i], false);
+                    return true;
+                } 
+            }
+            console.log("fallo")
+            return false;
+        }
     </script>
+</form>
 </body>
 </html>

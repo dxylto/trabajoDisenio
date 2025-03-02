@@ -10,6 +10,8 @@ let player1Score = 0,
 const winningScore = 5;
 let gameOver = false;
 let winner = '';
+let timerInterval;
+let seconds = 0;
 
 const player1 = {
   x: paddleOffset,
@@ -35,9 +37,10 @@ const ball = {
 
 const bounceSound = new Audio('./resources/BallBounce.mp3');
 const gameStartSound = new Audio('./resources/gameStart.mp3');
-const win = new Audio('./resources/win.mp3');
+const winSound = new Audio('./resources/win.mp3');
 bounceSound.volume = 1.0; // Ensure volume is set
 gameStartSound.volume = 1.0; // Ensure volume is set
+winSound.volume = 1.0; // Ensure volume is set
 
 function drawPaddle(x, y, w, h, color) {
   context.fillStyle = color;
@@ -93,6 +96,8 @@ function moveBall() {
   if (player1Score === winningScore || player2Score === winningScore) {
     winner = player1Score === winningScore ? 'Jugador 1' : 'Jugador 2';
     gameOver = true;
+    playWinSound();
+    clearInterval(timerInterval);
     resetBall();
   }
 }
@@ -140,13 +145,23 @@ function render() {
 
   if (gameOver) {
     drawText(`${winner} GANA!!`, canvas.width / 2, canvas.height / 2, "#FFF");
-    playWinSound();
   }
 }
 
 function gameLoop() {
   update();
   render();
+}
+
+function startTimer() {
+  seconds = 0;
+  timerInterval = setInterval(() => {
+    seconds++;
+    const minutes = Math.floor(seconds / 60);
+    const displaySeconds = seconds % 60;
+    document.getElementById("timer").textContent = 
+      `${minutes.toString().padStart(2, '0')}:${displaySeconds.toString().padStart(2, '0')}`;
+  }, 1000);
 }
 
 const keysPressed = {};
@@ -182,20 +197,28 @@ function updatePaddleMovement() {
 function playBounceSound() {
   bounceSound.currentTime = 0; // Rewind to start
   bounceSound.playbackRate = 0.8 + Math.random() * 0.4; // Randomize pitch, esto lo vi en un video de  alvamajo
-  bounceSound.play()
+  bounceSound.play().catch(error => {
+    console.error('Error playing sound:', error);
+  });
 }
+
 function playWinSound() {
-  win.play()
+  winSound.play().catch(error => {
+    console.error('Error playing win sound:', error);
+  });
 }
 
 document.getElementById("startGame").addEventListener("click", () => {
   gameOver = false;
   player1Score = 0;
   player2Score = 0;
-  gameStartSound.play()
+  gameStartSound.play().catch(error => {
+    console.error('Error playing start sound:', error);
+  });
   resetBall();
+  startTimer();
   setInterval(gameLoop, 1000 / 60);
 });
 
-
+// Initial render to draw everything before the game starts
 render();

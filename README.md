@@ -8,9 +8,12 @@
         >Tablero
     *Inicio de sesión/Registro
     *RanKing
+        >lista de partidas ganadas
     *Perfil
-        >Porcentaje de partidas ganadas y perdidas
-    *Amigos
-        >Rankings de amigos
+        >perfil
+        >partidas ganadas y perdidas
+        >lista de amigos
+    *Busqueda
+        >Buscar usuario
 
    

@@ -62,7 +62,7 @@ body {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
 
-/* Modo Alto Contraste */
+/* Modo alto contraste */
 .alto-contraste {
     background-color: black ;
     color: white;

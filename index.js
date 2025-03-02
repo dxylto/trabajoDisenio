@@ -1,7 +1,7 @@
-function acessibilidad(e){
+function acessibilidad(e) {
     let Ndiv = document.createElement("div");
     let bLetra = document.createElement("button");
-    bLetra.id = "LetraGrande";    
+    bLetra.id = "LetraGrande";
     bLetra.textContent = "Agrandar letra";
     Ndiv.style.backgroundColor = "white"
     Ndiv.appendChild(bLetra);
@@ -9,14 +9,11 @@ function acessibilidad(e){
 }
 
 let DATOS = [];
-function modificarPerfil() {
-    
-}   
-function verAmigos(){
+function verAmigos() {
     let tabla = document.getElementById("amigos");
     if (tabla.style.display == "none") {
         tabla.style.display = "block"
-    }else tabla.style.display = "none"
+    } else tabla.style.display = "none"
 }
 function listaDeAmigos(amigos) {
     let table = document.getElementById("amigos");
@@ -26,30 +23,29 @@ function listaDeAmigos(amigos) {
     table.appendChild(titulo);
     for (let i = 0; i < amigos.length; i++) {
         let tr2 = document.createElement("tr");
-       let td = document.createElement("td");
-       td.textContent = amigos[i];
-       if (i%2 == 0) {
+        let td = document.createElement("td");
+        td.textContent = amigos[i];
+        if (i % 2 == 0) {
             td.style.backgroundColor = "gray";
-       } 
-       tr2.appendChild(td);  
-       table.appendChild(tr2);    
+        }
+        tr2.appendChild(td);
+        table.appendChild(tr2);
     }
     table.style.display = "none";
 }
-async function datosjson() {
+async function datosjson(funcion) {
     try {
         let r = await fetch("./datos.json");
-            DATOS = await r.json();
-            console.log(DATOS)
-            usuarios();
+        DATOS = await r.json();
+        funcion();
     } catch (error) {
         console.log("no existe")
     }
 }
-datosjson();
+datosjson(usuarios);
 function usuarios(datosUsuario = null, lista = true) {
     if (!datosUsuario) {
-        datosUsuario = DATOS["usuarios"][0]; // Usa el primero solo si no se pasa un usuario
+        datosUsuario = DATOS["usuarios"][0];
     }
     let usuario = document.getElementById("username")
     let nivel = document.getElementById("nivel")
@@ -59,32 +55,37 @@ function usuarios(datosUsuario = null, lista = true) {
     ganadas.textContent = datosUsuario["ganadas"];
     nivel.textContent = datosUsuario["nivel"]
     perdidas.textContent = datosUsuario["perdidas"]
-  if (lista) {
-    listaDeAmigos(datosUsuario['amigos']);
-  }
+    if (lista) {
+        listaDeAmigos(datosUsuario['amigos']);
+    }
 }
-let busqueda = document.getElementById("buscar");
-busqueda.addEventListener("click",function(event){
-    event.preventDefault();
-    let h2 = document.getElementById("respuesta");
-    let div = document.getElementById("perfil");
-    let usu= document.getElementById("usuarioInput").value;
-   if(!buscarUsuario(usu)){
-        div.style.display = "none";
-        h2.textContent = "El usuario que buscas no existe";
-        h2.style.color = "red";
-   }else{
-        perfil.style.display = "block";
-        h2.textContent = "Usuario encontrado";
-        h2.style.color = "white";
-   }
-});
+
+document.addEventListener("DOMContentLoaded", function () {
+    let busqueda = document.getElementById("buscar");
+    if (busqueda) {
+        busqueda.addEventListener("click", function (event) {
+            event.preventDefault();
+            let h2 = document.getElementById("respuesta");
+            let div = document.getElementById("perfil");
+            let usu = document.getElementById("usuarioInput").value;
+            if (!buscarUsuario(usu)) {
+                div.style.display = "none";
+                h2.textContent = "El usuario que buscas no existe";
+                h2.style.color = "red";
+            } else {
+                perfil.style.display = "block";
+                h2.textContent = "Usuario encontrado";
+                h2.style.color = "white";
+            }
+        });
+    }
+})
 function buscarUsuario(usuario) {
     for (let i = 0; i < DATOS["usuarios"].length; i++) {
         if (DATOS["usuarios"][i]["username"] == usuario) {
             usuarios(DATOS["usuarios"][i], false);
             return true;
-        } 
+        }
     }
     return false;
 }

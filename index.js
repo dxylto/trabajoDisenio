@@ -63,3 +63,28 @@ function usuarios(datosUsuario = null, lista = true) {
     listaDeAmigos(datosUsuario['amigos']);
   }
 }
+let busqueda = document.getElementById("buscar");
+busqueda.addEventListener("click",function(event){
+    event.preventDefault();
+    let h2 = document.getElementById("respuesta");
+    let div = document.getElementById("perfil");
+    let usu= document.getElementById("usuarioInput").value;
+   if(!buscarUsuario(usu)){
+        div.style.display = "none";
+        h2.textContent = "El usuario que buscas no existe";
+        h2.style.color = "red";
+   }else{
+        perfil.style.display = "block";
+        h2.textContent = "Usuario encontrado";
+        h2.style.color = "white";
+   }
+});
+function buscarUsuario(usuario) {
+    for (let i = 0; i < DATOS["usuarios"].length; i++) {
+        if (DATOS["usuarios"][i]["username"] == usuario) {
+            usuarios(DATOS["usuarios"][i], false);
+            return true;
+        } 
+    }
+    return false;
+}

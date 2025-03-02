@@ -65,42 +65,18 @@
         <a href="index.html">Página Principal</a>
     </nav>
     <form action="">
-    <p><input type="text" name="buscar" id="usu" value="Introduzca el usuario">
+    <p><input type="text" name="buscar" id="usuarioInput" value="Introduzca el usuario">
     <input type="submit" id="buscar" value="buscar"></p> 
-    <h2 id="respuesta"></h2>
+    <h3 id="respuesta"></h3>
     <div id="perfil" class="profile-card" style="display: none;">
         <img id="avatar"  alt="Avatar" class="avatar" src="img/Imagen pegada.png">
-        <h3 id="username">nombre de usuario</h3>
+        <h2 id="username">nombre de usuario</h2>
         <p><strong>Nivel:</strong> <span id="nivel">1</span></p>
         <p><strong>Partidas Ganadas:</strong> <span id="ganadas">0</span></p>
         <p><strong>Partidas Perdidas:</strong> <span id="perdidas">0</span></p>
     </div>
     <script>
-        let busqueda = document.getElementById("buscar");
-        busqueda.addEventListener("click",function(event){
-            event.preventDefault();
-            let h2 = document.getElementById("respuesta");
-           if(!buscarUsuario(usu.value)){
-                h2.textContent = "El usuario que buscas no existe";
-                h2.style.color = "red";
-           }else{
-                let perfil = document.getElementById("perfil");
-                perfil.style.display = "block";
-                h2.textContent = "Usuario encontrado";
-                h2.style.color = "white";
-           }
-        });
-        function buscarUsuario(usuario) {
-            for (let i = 0; i < usuario.length-1; i++) {
-                if (DATOS["usuarios"][i]["username"] == usuario) {
-                    console.log("llego")
-                    usuarios(DATOS["usuarios"][i], false);
-                    return true;
-                } 
-            }
-            console.log("fallo")
-            return false;
-        }
+       
     </script>
 </form>
 </body>

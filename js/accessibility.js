@@ -2,8 +2,10 @@
 let fontSize = 16; 
 
 function aumentarTexto() {
+    if (fontSize < 30) { 
 fontSize += 2;
 document.body.style.fontSize = fontSize + "px";
+}
 }
 
 function disminuirTexto() {

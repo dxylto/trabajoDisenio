@@ -55,6 +55,11 @@ body {
     border: solid white;
     border-radius: 20px;
     height: 100%;
+    padding: 10px;
+    background: linear-gradient(#1e1e1e, #3e3e3e);
+    border: 2px solid #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
 
 /* Modo Alto Contraste */
@@ -70,4 +75,11 @@ body {
 
 #toggleBtn {
     position: relative;
+}
+
+canvas {
+    display: block;
+    margin: 0 auto;
+    background: #000;
+    border-radius: 10px;
 }

@@ -4,19 +4,22 @@ const context = canvas.getContext("2d");
 const paddleWidth = 10,
   paddleHeight = 100;
 const ballRadius = 10;
+const paddleOffset = 20; //separa la pala del borde
 let player1Score = 0,
   player2Score = 0;
-const winningScore = 10;
+const winningScore = 5;
+let gameOver = false;
+let winner = '';
 
 const player1 = {
-  x: 0,
+  x: paddleOffset,
   y: canvas.height / 2 - paddleHeight / 2,
   width: paddleWidth,
   height: paddleHeight,
   dy: 0,
 };
 const player2 = {
-  x: canvas.width - paddleWidth,
+  x: canvas.width - paddleWidth - paddleOffset,
   y: canvas.height / 2 - paddleHeight / 2,
   width: paddleWidth,
   height: paddleHeight,
@@ -29,6 +32,12 @@ const ball = {
   dx: 0,
   dy: 0,
 };
+
+const bounceSound = new Audio('./resources/BallBounce.mp3');
+const gameStartSound = new Audio('./resources/gameStart.mp3');
+const win = new Audio('./resources/win.mp3');
+bounceSound.volume = 1.0; // Ensure volume is set
+gameStartSound.volume = 1.0; // Ensure volume is set
 
 function drawPaddle(x, y, w, h, color) {
   context.fillStyle = color;
@@ -45,7 +54,8 @@ function drawCircle(x, y, r, color) {
 
 function drawText(text, x, y, color) {
   context.fillStyle = color;
-  context.font = "32px Arial";
+  context.font = "48px Fantasy";
+  context.textAlign = "center";
   context.fillText(text, x, y);
 }
 
@@ -62,12 +72,14 @@ function moveBall() {
 
   if (ball.y + ball.radius > canvas.height || ball.y - ball.radius < 0) {
     ball.dy *= -1;
+    playBounceSound();
   }
 
   let player = ball.x < canvas.width / 2 ? player1 : player2;
 
   if (collision(ball, player)) {
     ball.dx *= -1;
+    playBounceSound();
   }
 
   if (ball.x - ball.radius < 0) {
@@ -79,9 +91,8 @@ function moveBall() {
   }
 
   if (player1Score === winningScore || player2Score === winningScore) {
-    alert(`Player ${player1Score === winningScore ? 1 : 2} wins!`);
-    player1Score = 0;
-    player2Score = 0;
+    winner = player1Score === winningScore ? 'Jugador 1' : 'Jugador 2';
+    gameOver = true;
     resetBall();
   }
 }
@@ -103,15 +114,19 @@ function resetBall() {
   player1.y = canvas.height / 2 - paddleHeight / 2;
   player2.y = canvas.height / 2 - paddleHeight / 2;
   setTimeout(() => {
-    ball.dx = (Math.random() > 0.5 ? 1 : -1) * 2;
-    ball.dy = (Math.random() > 0.5 ? 1 : -1) * 2;
+    if (!gameOver) {
+      ball.dx = (Math.random() > 0.5 ? 1 : -1) * 3;
+      ball.dy = (Math.random() > 0.5 ? 1 : -1) * 3;
+    }
   }, 1000);
 }
 
 function update() {
-  movePaddle(player1);
-  movePaddle(player2);
-  moveBall();
+  if (!gameOver) {
+    movePaddle(player1);
+    movePaddle(player2);
+    moveBall();
+  }
 }
 
 function render() {
@@ -122,6 +137,11 @@ function render() {
   drawCircle(ball.x, ball.y, ball.radius, "#FFF");
   drawText(player1Score, canvas.width / 4, canvas.height / 5, "#FFF");
   drawText(player2Score, (3 * canvas.width) / 4, canvas.height / 5, "#FFF");
+
+  if (gameOver) {
+    drawText(`${winner} GANA!!`, canvas.width / 2, canvas.height / 2, "#FFF");
+    playWinSound();
+  }
 }
 
 function gameLoop() {
@@ -159,10 +179,23 @@ function updatePaddleMovement() {
   }
 }
 
+function playBounceSound() {
+  bounceSound.currentTime = 0; // Rewind to start
+  bounceSound.playbackRate = 0.8 + Math.random() * 0.4; // Randomize pitch, esto lo vi en un video de  alvamajo
+  bounceSound.play()
+}
+function playWinSound() {
+  win.play()
+}
+
 document.getElementById("startGame").addEventListener("click", () => {
+  gameOver = false;
+  player1Score = 0;
+  player2Score = 0;
+  gameStartSound.play()
   resetBall();
   setInterval(gameLoop, 1000 / 60);
 });
 
-// Initial render to draw everything before the game starts
+
 render();

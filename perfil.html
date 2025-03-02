@@ -86,8 +86,17 @@
             }
         }
         footer{
-    margin-top: auto;
-}
+            margin-top: auto;
+        }
+        #logo svg{
+            transition: transform 0.3s ease;
+        }
+        #logo:active svg{
+            transform: scale(0.8);
+        }
+        #logo svg{
+            transform: scale(1);
+        }
     </style>
 </head>
 <body>
@@ -95,7 +104,16 @@
         <a href="index.html">Página Principal</a>
         <a href="">Jugar</a>
     </nav>
-    
+    <p id="logo">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 60" width="200" height="60">
+            <rect width="200" height="60" rx="15" fill="#333"/>
+            <text x="50%" y="50%" font-size="28" font-family="Arial, sans-serif" fill="white" text-anchor="middle" alignment-baseline="middle">
+                PONG
+            </text>
+            <circle cx="40" cy="30" r="8" fill="#fff"/>
+            <circle cx="160" cy="30" r="8" fill="#fff"/>
+        </svg>    
+    </p>
     <div class="profile-card">
         <img id="avatar"  alt="Avatar" class="avatar" src="img/Imagen pegada.png">
         <h2 id="username">nombre de usuario</h2>

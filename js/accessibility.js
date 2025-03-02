@@ -6,6 +6,7 @@ let altoContraste = localStorage.getItem("altoContraste") === "true";
 if (altoContraste) {
     document.body.classList.add("alto-contraste");
 }
+console.log(localStorage.getItem("altoContraste")); // Para verificar que el valor se lee correctamente
 
 function aumentarTexto() {
     if (fontSize < 30) { 
@@ -23,7 +24,17 @@ function disminuirTexto() {
     }
 }
 
+// function modoAltoContraste() {
+//     document.body.classList.toggle("alto-contraste");
+//     localStorage.setItem("altoContraste", document.body.classList.contains("alto-contraste"));
+// }
+
 function modoAltoContraste() {
-    document.body.classList.toggle("alto-contraste");
+    if (document.body.classList.contains("alto-contraste")) {
+        document.body.classList.remove("alto-contraste");
+    } else {
+        document.body.classList.add("alto-contraste");
+    }
     localStorage.setItem("altoContraste", document.body.classList.contains("alto-contraste"));
 }
+

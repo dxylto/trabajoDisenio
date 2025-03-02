@@ -14,6 +14,7 @@ body {
     padding: 20px;
 }
 .contenedor {
+    margin-top: 30px;
     display: flex;
     justify-content: space-between;     
     height: 90vh;
@@ -64,8 +65,13 @@ body {
 
 /* Modo alto contraste */
 .alto-contraste {
-    background-color: black ;
+    background-color: black;
     color: white;
+    div{
+        background-color: black;
+        color: white;
+        border: white solid 2px;
+    }
 }
 .modal-content,.modal-body {
     background-color: black;
@@ -76,10 +82,21 @@ body {
 #toggleBtn {
     position: relative;
 }
-
 canvas {
     display: block;
     margin: 0 auto;
-    background: #000;
+    background: black;
     border-radius: 10px;
+}
+#logo svg{
+    transition: transform 0.3s ease;
+}
+#logo:active svg{
+    transform: scale(0.8);
+}
+#logo svg{
+    transform: scale(1);
+}
+footer{
+    margin-bottom: auto;
 }
